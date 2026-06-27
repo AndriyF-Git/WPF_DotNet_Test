@@ -29,7 +29,7 @@ namespace WPF_DotNet_Test.ViewModels
                 Result = "Loading...";
 
                 var json = await _coinGeckoService.GetTopCoinsAsync();
-                Result = json;
+                Result = string.Join("\n", json.Select(c => $"{c.Name} ({c.Symbol}): ${c.CurrentPrice:F2}"));
             }
             catch (Exception ex)
             {
