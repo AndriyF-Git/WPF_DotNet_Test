@@ -5,8 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_DotNet_Test"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="CoinGecko API Client" Height="600" Width="800">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Window.Resources>
+    <Grid Background="#F5F5F5">
+        <StackPanel Margin="20" VerticalAlignment="Stretch">
+            <Button Command="{Binding LoadCoinsCommand}" 
+                    Padding="10,8" 
+                    FontSize="14"
+                    Background="#007ACC"
+                    Foreground="White"
+                    Cursor="Hand">
+                Завантажити
+            </Button>
 
+            <TextBlock Text="Завантаження..." 
+                       Margin="0,15,0,0"
+                       FontSize="12"
+                       Foreground="#666"
+                       Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
+            </TextBlock>
+
+            <TextBlock Text="{Binding Result}" 
+                       Margin="0,15,0,0"
+                       TextWrapping="Wrap"
+                       FontFamily="Courier New"
+                       FontSize="11"
+                       Foreground="#333"
+                       VerticalAlignment="Stretch">
+            </TextBlock>
+        </StackPanel>
     </Grid>
 </Window>
