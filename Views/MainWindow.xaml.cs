@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace WPF_DotNet_Test
+namespace WPF_DotNet_Test.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

@@ -1,6 +1,8 @@
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using WPF_DotNet_Test.Models;
 using WPF_DotNet_Test.Services;
 
 namespace WPF_DotNet_Test.ViewModels
@@ -10,10 +12,16 @@ namespace WPF_DotNet_Test.ViewModels
         private readonly CoinGeckoService _coinGeckoService;
 
         [ObservableProperty]
-        private string result = "Press the button to load coins data";
+        private string statusMessage = "Press the button to load coins";
+
+        [ObservableProperty]
+        private bool hasStatusMessage = true;
 
         [ObservableProperty]
         private bool isLoading;
+
+        [ObservableProperty]
+        private ObservableCollection<Coin> coins = new();
 
         public MainViewModel(CoinGeckoService coinGeckoService)
         {
@@ -26,19 +34,24 @@ namespace WPF_DotNet_Test.ViewModels
             try
             {
                 IsLoading = true;
-                Result = "Loading...";
+                HasStatusMessage = false;
+                Coins.Clear();
 
-                var json = await _coinGeckoService.GetTopCoinsAsync();
-                Result = string.Join("\n", json.Select(c => $"{c.Name} ({c.Symbol}): ${c.CurrentPrice:F2}"));
+                var result = await _coinGeckoService.GetTopCoinsAsync();
+
+                foreach (var coin in result)
+                    Coins.Add(coin);
             }
             catch (Exception ex)
             {
-                Result = $"Error: {ex.Message}";
+                StatusMessage = $"Error: {ex.Message}";
+                HasStatusMessage = true;
             }
             finally
             {
                 IsLoading = false;
             }
         }
+
     }
 }

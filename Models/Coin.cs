@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace WPF_DotNet_Test.Models
 {
-    public class Coin
+    public class Coin : CoinBase
     {
-        public string? Id { get; set; }
-        public string? Name { get; set; }
-        public string? Symbol { get; set; }
+        [JsonPropertyName("current_price")]
         public decimal CurrentPrice { get; set; }
+
+        [JsonPropertyName("price_change_percentage_24h")]
         public double PriceChangePercentage24h { get; set; }
+
+        [JsonPropertyName("market_cap")]
         public decimal MarketCap { get; set; }
     }
 }

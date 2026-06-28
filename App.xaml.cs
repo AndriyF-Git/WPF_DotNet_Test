@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WPF_DotNet_Test.Services;
 using WPF_DotNet_Test.ViewModels;
+using WPF_DotNet_Test.Views;
 
 // Required NuGet packages:
 // - Microsoft.Extensions.DependencyInjection (v10.0.0)
