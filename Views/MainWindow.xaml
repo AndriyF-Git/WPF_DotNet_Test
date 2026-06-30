@@ -60,6 +60,11 @@
             </DockPanel>
         </Border>
 
+        <Frame Grid.Column="1"
+               x:Name="MainFrame"
+               Source="MainPage.xaml"
+               NavigationUIVisibility="Hidden"/>
+        <!--
         <Grid Grid.Column="1"
               Background="{StaticResource SidebarBrush}">
             <StackPanel Margin="20" VerticalAlignment="Stretch">
@@ -97,7 +102,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
-        </Grid>
+        </Grid>-->
 
     </Grid>
 </Window>
