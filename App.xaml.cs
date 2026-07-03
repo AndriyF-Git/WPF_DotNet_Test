@@ -39,6 +39,7 @@ namespace WPF_DotNet_Test
 
             services.AddTransient<CoinGeckoService>();
             services.AddTransient<MainViewModel>();
+            services.AddTransient<MainPage>();
             services.AddTransient<MainWindow>();
 
             _serviceProvider = services.BuildServiceProvider();
@@ -49,9 +50,6 @@ namespace WPF_DotNet_Test
             base.OnStartup(e);
 
             var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
-            var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
-
-            mainWindow.DataContext = mainViewModel;
             mainWindow.Show();
         }
     }

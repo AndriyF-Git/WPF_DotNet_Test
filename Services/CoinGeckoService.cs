@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace WPF_DotNet_Test.Services
         public async Task<List<Coin>> GetTopCoinsAsync()
         {
             var client = _httpClientFactory.CreateClient("CoinGecko");
-            var response = await client.GetAsync("coins/markets?vs_currency=usd&per_page=5");
+            var response = await client.GetAsync("coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&sparkline=false");
             response.EnsureSuccessStatusCode();
             var jsonResponse = await response.Content.ReadAsStringAsync();
             return JsonSerializer.Deserialize<List<Coin>>(jsonResponse, _jsonOptions) ?? new List<Coin>();

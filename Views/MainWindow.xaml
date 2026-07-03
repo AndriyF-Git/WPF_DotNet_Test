@@ -6,9 +6,6 @@
         xmlns:local="clr-namespace:WPF_DotNet_Test.Views"
         mc:Ignorable="d"
         Title="CoinGecko API Client" Height="600" Width="800">
-    <Window.Resources>
-        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-    </Window.Resources>
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -36,18 +33,17 @@
                 <StackPanel DockPanel.Dock="Top">
                     <Button Content="Home"
                             Tag="🏠"
-                            Style="{StaticResource NavButtonStyle}"
-                            Command="{Binding GoHomeCommand}"/>
+                            Style="{StaticResource NavButtonStyle}"/>
 
                     <Button Content="Search"
                             Tag="🔍"
                             Style="{StaticResource NavButtonStyle}"
-                            Command="{Binding GoSearchCommand}"/>
+                            IsEnabled="False"/>
 
                     <Button Content="Converter"
                             Tag="🔄"
                             Style="{StaticResource NavButtonStyle}"
-                            Command="{Binding GoConverterCommand}"/>
+                            IsEnabled="False"/>
                 </StackPanel>
 
                 <!-- Footer -->
@@ -62,47 +58,7 @@
 
         <Frame Grid.Column="1"
                x:Name="MainFrame"
-               Source="MainPage.xaml"
                NavigationUIVisibility="Hidden"/>
-        <!--
-        <Grid Grid.Column="1"
-              Background="{StaticResource SidebarBrush}">
-            <StackPanel Margin="20" VerticalAlignment="Stretch">
-                <Button Command="{Binding LoadCoinsCommand}" 
-                    Padding="10,8" 
-                    FontSize="14"
-                    Background="#007ACC"
-                    Foreground="White"
-                    Cursor="Hand">  
-                    Load Coins
-                </Button>
-
-                <TextBlock Text="Loading..." 
-                   Margin="0,15,0,0"
-                   FontSize="12"
-                   Foreground="White"
-                   Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
-                </TextBlock>
-
-                <TextBlock Text="{Binding StatusMessage}"
-                   Visibility="{Binding HasStatusMessage, 
-                   Converter={StaticResource BooleanToVisibilityConverter}}"/>
-
-                <ListView ItemsSource="{Binding Coins}"
-                    Background="{StaticResource SidebarBrush}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Name}" Width="150"/>
-                                <TextBlock Text="{Binding Symbol}" Width="80"/>
-                                <TextBlock Text="{Binding CurrentPrice, StringFormat='${0:F2}'}" Width="120"/>
-                                <TextBlock Text="{Binding PriceChangePercentage24h, StringFormat='{}{0:F2}%'}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackPanel>
-        </Grid>-->
 
     </Grid>
 </Window>

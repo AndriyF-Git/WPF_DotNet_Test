@@ -16,5 +16,11 @@ namespace WPF_DotNet_Test.Models
 
         [JsonPropertyName("market_cap")]
         public decimal MarketCap { get; set; }
+
+        [JsonPropertyName("market_cap_rank")]
+        public int? MarketCapRank { get; set; }
+
+        [JsonPropertyName("image")]
+        public string? Image { get; set; }
     }
 }

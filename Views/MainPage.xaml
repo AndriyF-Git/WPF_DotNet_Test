@@ -52,11 +52,8 @@
                 <ItemsControl ItemsSource="{Binding Coins}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <!-- Each row is a transparent Button for click-to-detail -->
                             <Button Style="{StaticResource CoinRowButtonStyle}"
-                                    Command="{Binding DataContext.NavigateToCoinCommand,
-                                              RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                    CommandParameter="{Binding}">
+                                    IsHitTestVisible="False">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="50"/>
@@ -99,8 +96,8 @@
 
                                     <!-- 24h % -->
                                     <TextBlock Grid.Column="4"
-                                               Text="{Binding PriceChangePercentage24h}"
-                                               Foreground="{Binding PriceChangePercentage24h}"
+                                               Text="{Binding PriceChangePercentage24h, StringFormat='{}{0:F2}%'}"
+                                               Foreground="{Binding PriceChangePercentage24h, Converter={StaticResource PriceChangeToBrushConverter}}"
                                                FontSize="13" FontWeight="Medium"
                                                HorizontalAlignment="Right"
                                                VerticalAlignment="Center"/>
@@ -121,7 +118,7 @@
         </DockPanel>
 
         <!-- ── Loading Overlay ── -->
-        <Grid Visibility="{Binding IsLoading}"
+        <Grid Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
               Background="#AA1E1E2E">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <!-- Spinner -->
@@ -158,6 +155,20 @@
             </StackPanel>
         </Grid>
 
+        <!-- ── Error Banner ── -->
+        <Border Visibility="{Binding HasStatusMessage, Converter={StaticResource BooleanToVisibilityConverter}}"
+                Background="{StaticResource CardBrush}"
+                BorderBrush="{StaticResource NegativeBrush}"
+                BorderThickness="1"
+                CornerRadius="8"
+                Padding="16,10"
+                Margin="24"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Stretch">
+            <TextBlock Text="{Binding StatusMessage}"
+                       Foreground="{StaticResource NegativeBrush}"
+                       TextWrapping="Wrap"/>
+        </Border>
 
     </Grid>
 </Page>

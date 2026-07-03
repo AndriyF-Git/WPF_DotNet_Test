@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+using System.Windows;
 
 namespace WPF_DotNet_Test.Views
 {
@@ -8,9 +7,10 @@ namespace WPF_DotNet_Test.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(MainPage mainPage)
         {
             InitializeComponent();
+            MainFrame.Navigate(mainPage);
         }
     }
 }

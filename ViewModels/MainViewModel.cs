@@ -1,3 +1,4 @@
+using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -12,10 +13,10 @@ namespace WPF_DotNet_Test.ViewModels
         private readonly CoinGeckoService _coinGeckoService;
 
         [ObservableProperty]
-        private string statusMessage = "Press the button to load coins";
+        private string statusMessage = string.Empty;
 
         [ObservableProperty]
-        private bool hasStatusMessage = true;
+        private bool hasStatusMessage;
 
         [ObservableProperty]
         private bool isLoading;
@@ -26,6 +27,8 @@ namespace WPF_DotNet_Test.ViewModels
         public MainViewModel(CoinGeckoService coinGeckoService)
         {
             _coinGeckoService = coinGeckoService;
+
+            _ = LoadCoinsCommand.ExecuteAsync(null);
         }
 
         [RelayCommand]
@@ -52,6 +55,5 @@ namespace WPF_DotNet_Test.ViewModels
                 IsLoading = false;
             }
         }
-
     }
 }
