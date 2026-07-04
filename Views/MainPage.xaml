@@ -53,7 +53,9 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Button Style="{StaticResource CoinRowButtonStyle}"
-                                    IsHitTestVisible="False">
+                                    Command="{Binding DataContext.NavigateToCoinCommand,
+                                              RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                    CommandParameter="{Binding}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="50"/>

@@ -21,6 +21,10 @@ namespace WPF_DotNet_Test
     {
         private readonly ServiceProvider _serviceProvider;
 
+        /// Exposed so pages created with a runtime parameter (e.g. DetailPage(coinId))
+        /// can resolve services without a dedicated navigation/DI abstraction.
+        public static IServiceProvider Services { get; private set; } = null!;
+
         public App()
         {
             var config = new ConfigurationBuilder()
@@ -43,6 +47,7 @@ namespace WPF_DotNet_Test
             services.AddTransient<MainWindow>();
 
             _serviceProvider = services.BuildServiceProvider();
+            Services = _serviceProvider;
         }
 
         protected override void OnStartup(StartupEventArgs e)

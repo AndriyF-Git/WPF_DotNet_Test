@@ -12,6 +12,8 @@ namespace WPF_DotNet_Test.Views
         {
             InitializeComponent();
             DataContext = viewModel;
+
+            viewModel.CoinSelected += coinId => NavigationService?.Navigate(new DetailPage(coinId));
         }
     }
 }

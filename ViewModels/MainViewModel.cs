@@ -24,6 +24,9 @@ namespace WPF_DotNet_Test.ViewModels
         [ObservableProperty]
         private ObservableCollection<Coin> coins = new();
 
+        /// Raised when a coin row is clicked; the View owns navigation, the ViewModel just reports the selection.
+        public event Action<string>? CoinSelected;
+
         public MainViewModel(CoinGeckoService coinGeckoService)
         {
             _coinGeckoService = coinGeckoService;
@@ -54,6 +57,15 @@ namespace WPF_DotNet_Test.ViewModels
             {
                 IsLoading = false;
             }
+        }
+
+        [RelayCommand]
+        private void NavigateToCoin(Coin coin)
+        {
+            if (coin?.Id is null)
+                return;
+
+            CoinSelected?.Invoke(coin.Id);
         }
     }
 }

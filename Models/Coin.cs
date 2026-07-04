@@ -22,5 +22,8 @@ namespace WPF_DotNet_Test.Models
 
         [JsonPropertyName("image")]
         public string? Image { get; set; }
+
+        [JsonPropertyName("total_volume")]
+        public decimal TotalVolume { get; set; }
     }
 }
