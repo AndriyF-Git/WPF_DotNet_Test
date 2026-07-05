@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d"
-      Background="{StaticResource BackgroundBrush}"
+      Background="{DynamicResource BackgroundBrush}"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DetailPage">
 
@@ -15,7 +15,7 @@
             <DockPanel DockPanel.Dock="Top" Margin="0,0,0,16">
                 <Button DockPanel.Dock="Left"
                         Content="← Back"
-                        Style="{StaticResource GhostButtonStyle}"
+                        Style="{DynamicResource GhostButtonStyle}"
                         Click="BackButton_Click"
                         VerticalAlignment="Top"
                         Margin="0,0,12,0"/>
@@ -30,36 +30,36 @@
                                    FontSize="22" FontWeight="SemiBold"/>
                         <TextBlock Text="{Binding Coin.Symbol}"
                                    FontSize="13"
-                                   Foreground="{StaticResource SecondaryTextBrush}"/>
+                                   Foreground="{DynamicResource SecondaryTextBrush}"/>
                     </StackPanel>
                 </StackPanel>
             </DockPanel>
 
             <!-- Stat cards -->
             <UniformGrid DockPanel.Dock="Top" Columns="4" Margin="0,0,0,16">
-                <Border Style="{StaticResource StatCardStyle}">
+                <Border Style="{DynamicResource StatCardStyle}">
                     <StackPanel>
-                        <TextBlock Text="Price" FontSize="11" Foreground="{StaticResource SecondaryTextBrush}"/>
+                        <TextBlock Text="Price" FontSize="11" Foreground="{DynamicResource SecondaryTextBrush}"/>
                         <TextBlock Text="{Binding Coin.CurrentPrice, StringFormat='${0:N2}'}" FontSize="16" FontWeight="Medium" Margin="0,4,0,0"/>
                     </StackPanel>
                 </Border>
-                <Border Style="{StaticResource StatCardStyle}">
+                <Border Style="{DynamicResource StatCardStyle}">
                     <StackPanel>
-                        <TextBlock Text="24h Change" FontSize="11" Foreground="{StaticResource SecondaryTextBrush}"/>
+                        <TextBlock Text="24h Change" FontSize="11" Foreground="{DynamicResource SecondaryTextBrush}"/>
                         <TextBlock Text="{Binding Coin.PriceChangePercentage24h, StringFormat='{}{0:F2}%'}"
                                    Foreground="{Binding Coin.PriceChangePercentage24h, Converter={StaticResource PriceChangeToBrushConverter}}"
                                    FontSize="16" FontWeight="Medium" Margin="0,4,0,0"/>
                     </StackPanel>
                 </Border>
-                <Border Style="{StaticResource StatCardStyle}">
+                <Border Style="{DynamicResource StatCardStyle}">
                     <StackPanel>
-                        <TextBlock Text="Market Cap" FontSize="11" Foreground="{StaticResource SecondaryTextBrush}"/>
+                        <TextBlock Text="Market Cap" FontSize="11" Foreground="{DynamicResource SecondaryTextBrush}"/>
                         <TextBlock Text="{Binding Coin.MarketCap, StringFormat='${0:N0}'}" FontSize="16" FontWeight="Medium" Margin="0,4,0,0"/>
                     </StackPanel>
                 </Border>
-                <Border Style="{StaticResource StatCardStyle}">
+                <Border Style="{DynamicResource StatCardStyle}">
                     <StackPanel>
-                        <TextBlock Text="24h Volume" FontSize="11" Foreground="{StaticResource SecondaryTextBrush}"/>
+                        <TextBlock Text="24h Volume" FontSize="11" Foreground="{DynamicResource SecondaryTextBrush}"/>
                         <TextBlock Text="{Binding Coin.TotalVolume, StringFormat='${0:N0}'}" FontSize="16" FontWeight="Medium" Margin="0,4,0,0"/>
                     </StackPanel>
                 </Border>
@@ -76,7 +76,7 @@
                 <ItemsControl ItemsSource="{Binding Tickers}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border Style="{StaticResource CardStyle}" Padding="16,10" Margin="0,0,0,8">
+                            <Border Style="{DynamicResource CardStyle}" Padding="16,10" Margin="0,0,0,8">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
@@ -98,7 +98,7 @@
                                     <TextBlock Grid.Column="2"
                                                Text="{Binding Volume, StringFormat='Vol: {0:N0}'}"
                                                FontSize="13"
-                                               Foreground="{StaticResource SecondaryTextBrush}"
+                                               Foreground="{DynamicResource SecondaryTextBrush}"
                                                HorizontalAlignment="Right"
                                                VerticalAlignment="Center"/>
                                 </Grid>
@@ -118,7 +118,7 @@
                              Stroke="#33FFFFFF"
                              StrokeThickness="4"/>
                     <Ellipse Width="44" Height="44"
-                             Stroke="{StaticResource AccentBrush}"
+                             Stroke="{DynamicResource AccentBrush}"
                              StrokeThickness="4"
                              StrokeDashArray="20 50"
                              StrokeDashCap="Round">
@@ -139,7 +139,7 @@
                     </Ellipse>
                 </Grid>
                 <TextBlock Text="Loading coin data…"
-                           Foreground="{StaticResource SecondaryTextBrush}"
+                           Foreground="{DynamicResource SecondaryTextBrush}"
                            FontSize="14"
                            HorizontalAlignment="Center"/>
             </StackPanel>
@@ -147,8 +147,8 @@
 
         <!-- ── Error Banner ── -->
         <Border Visibility="{Binding HasStatusMessage, Converter={StaticResource BooleanToVisibilityConverter}}"
-                Background="{StaticResource CardBrush}"
-                BorderBrush="{StaticResource NegativeBrush}"
+                Background="{DynamicResource CardBrush}"
+                BorderBrush="{DynamicResource NegativeBrush}"
                 BorderThickness="1"
                 CornerRadius="8"
                 Padding="16,10"
@@ -156,7 +156,7 @@
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Stretch">
             <TextBlock Text="{Binding StatusMessage}"
-                       Foreground="{StaticResource NegativeBrush}"
+                       Foreground="{DynamicResource NegativeBrush}"
                        TextWrapping="Wrap"/>
         </Border>
     </Grid>

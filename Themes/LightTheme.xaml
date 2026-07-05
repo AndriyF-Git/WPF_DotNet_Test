@@ -2,18 +2,18 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!--  BRUSHES  -->
-    <SolidColorBrush x:Key="BackgroundBrush"    Color="#1E1E2E"/>
-    <SolidColorBrush x:Key="SidebarBrush"       Color="#16161E"/>
-    <SolidColorBrush x:Key="CardBrush"          Color="#2A2A3E"/>
+    <SolidColorBrush x:Key="BackgroundBrush"    Color="#F5F5FA"/>
+    <SolidColorBrush x:Key="SidebarBrush"       Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="CardBrush"          Color="#FFFFFF"/>
     <SolidColorBrush x:Key="AccentBrush"        Color="#7C3AED"/>
     <SolidColorBrush x:Key="AccentHoverBrush"   Color="#6D28D9"/>
-    <SolidColorBrush x:Key="PrimaryTextBrush"   Color="#FFFFFF"/>
-    <SolidColorBrush x:Key="SecondaryTextBrush" Color="#A0A0B0"/>
-    <SolidColorBrush x:Key="PositiveBrush"      Color="#10B981"/>
-    <SolidColorBrush x:Key="NegativeBrush"      Color="#EF4444"/>
-    <SolidColorBrush x:Key="BorderBrush"        Color="#3A3A4E"/>
-    <SolidColorBrush x:Key="HoverBrush"         Color="#33334E"/>
-    <SolidColorBrush x:Key="InputBrush"         Color="#252535"/>
+    <SolidColorBrush x:Key="PrimaryTextBrush"   Color="#1E1E2E"/>
+    <SolidColorBrush x:Key="SecondaryTextBrush" Color="#6B6B7B"/>
+    <SolidColorBrush x:Key="PositiveBrush"      Color="#0F9D6E"/>
+    <SolidColorBrush x:Key="NegativeBrush"      Color="#DC2626"/>
+    <SolidColorBrush x:Key="BorderBrush"        Color="#E2E2EC"/>
+    <SolidColorBrush x:Key="HoverBrush"         Color="#EEEEF6"/>
+    <SolidColorBrush x:Key="InputBrush"         Color="#F5F5FA"/>
 
     <!-- TEXTBLOCK  -->
     <Style TargetType="TextBlock">
@@ -165,7 +165,7 @@
                             <Setter TargetName="border" Property="Background" Value="{StaticResource HoverBrush}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="#2E2E4E"/>
+                            <Setter TargetName="border" Property="Background" Value="#E4E4F0"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -182,7 +182,7 @@
         <Setter Property="Padding"       Value="12,10"/>
         <Setter Property="FontSize"      Value="14"/>
         <Setter Property="FontFamily"    Value="Segoe UI"/>
-        <Setter Property="CaretBrush"    Value="White"/>
+        <Setter Property="CaretBrush"    Value="Black"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">

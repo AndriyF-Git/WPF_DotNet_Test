@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
 
         <Border Grid.Column="0"
-                Background="{StaticResource SidebarBrush}">
+                Background="{DynamicResource SidebarBrush}">
             <DockPanel>
 
                 <!-- Logo -->
@@ -22,10 +22,10 @@
                     <TextBlock Text="₿ CryptoApp"
                                FontSize="20"
                                FontWeight="Bold"
-                               Foreground="{StaticResource AccentBrush}"/>
+                               Foreground="{DynamicResource AccentBrush}"/>
                     <TextBlock Text="Live Market Dashboard"
                                FontSize="11"
-                               Foreground="{StaticResource SecondaryTextBrush}"
+                               Foreground="{DynamicResource SecondaryTextBrush}"
                                Margin="0,4,0,0"/>
                 </StackPanel>
 
@@ -33,26 +33,27 @@
                 <StackPanel DockPanel.Dock="Top">
                     <Button Content="Home"
                             Tag="🏠"
-                            Style="{StaticResource NavButtonStyle}"/>
+                            Style="{DynamicResource NavButtonStyle}"
+                            Click="Home_Click"/>
 
                     <Button Content="Search"
                             Tag="🔍"
-                            Style="{StaticResource NavButtonStyle}"
-                            IsEnabled="False"/>
-
-                    <Button Content="Converter"
-                            Tag="🔄"
-                            Style="{StaticResource NavButtonStyle}"
-                            IsEnabled="False"/>
+                            Style="{DynamicResource NavButtonStyle}"
+                            Click="Search_Click"/>
                 </StackPanel>
 
                 <!-- Footer -->
-                <TextBlock DockPanel.Dock="Bottom"
-                           Text="Powered by CoinGecko"
-                           FontSize="10"
-                           Foreground="{StaticResource SecondaryTextBrush}"
-                           HorizontalAlignment="Center"
-                           Margin="0,0,0,16"/>
+                <StackPanel DockPanel.Dock="Bottom" Margin="0,0,0,16">
+                    <Button Content="Toggle theme"
+                            Tag="🌓"
+                            Style="{DynamicResource NavButtonStyle}"
+                            Click="ThemeToggle_Click"
+                            Margin="8,0,8,8"/>
+                    <TextBlock Text="Powered by CoinGecko"
+                               FontSize="10"
+                               Foreground="{DynamicResource SecondaryTextBrush}"
+                               HorizontalAlignment="Center"/>
+                </StackPanel>
             </DockPanel>
         </Border>
 

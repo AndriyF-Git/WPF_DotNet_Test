@@ -44,6 +44,8 @@ namespace WPF_DotNet_Test
             services.AddTransient<CoinGeckoService>();
             services.AddTransient<MainViewModel>();
             services.AddTransient<MainPage>();
+            services.AddTransient<SearchViewModel>();
+            services.AddTransient<SearchPage>();
             services.AddTransient<MainWindow>();
 
             _serviceProvider = services.BuildServiceProvider();

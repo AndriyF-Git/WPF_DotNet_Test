@@ -12,7 +12,7 @@ namespace WPF_DotNet_Test.Models
         public decimal CurrentPrice { get; set; }
 
         [JsonPropertyName("price_change_percentage_24h")]
-        public double PriceChangePercentage24h { get; set; }
+        public double? PriceChangePercentage24h { get; set; }
 
         [JsonPropertyName("market_cap")]
         public decimal MarketCap { get; set; }

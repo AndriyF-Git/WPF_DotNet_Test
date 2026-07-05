@@ -42,5 +42,15 @@ namespace WPF_DotNet_Test.Services
             var result = JsonSerializer.Deserialize<TickersResponse>(jsonResponse, _jsonOptions);
             return result?.Tickers ?? new List<Ticker>();
         }
+
+        public async Task<List<SearchCoin>> SearchCoinsAsync(string query)
+        {
+            var client = _httpClientFactory.CreateClient("CoinGecko");
+            var response = await client.GetAsync($"search?query={Uri.EscapeDataString(query)}");
+            response.EnsureSuccessStatusCode();
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<SearchResult>(jsonResponse, _jsonOptions);
+            return result?.Coins ?? new List<SearchCoin>();
+        }
     }
 }
